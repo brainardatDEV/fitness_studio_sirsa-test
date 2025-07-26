@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Studio Sirsa | Transform Your Body</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff5e14;
+            --secondary: #1e1e1e;
+            --accent: #ff007a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles - Mobile First */
+        header {
+            background: rgba(30, 30, 30, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-right: 8px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        nav {
+            transition: var(--transition);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--primary);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 94, 20, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 90%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 94, 20, 0.5);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .secondary-button:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* Registration Form */
+        .registration-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            animation: slideInDown 0.5s ease;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #333 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .form-container {
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 94, 20, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .form-row .form-group {
+            flex: 1 1 200px;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: #e05512;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 94, 20, 0.3);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px 20px;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .feature-card.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 94, 20, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+        }
+
+        .feature-card:hover .feature-icon i {
+            color: white;
+        }
+
+        .feature-icon i {
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+        }
+
+        /* Membership Section */
+        .membership {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .membership .section-title h2 {
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 40px 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transform: scale(0.95);
+            opacity: 0;
+        }
+
+        .pricing-card.animated {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .pricing-card.popular {
+            background: rgba(255,94,20,0.15);
+            border: 2px solid var(--primary);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 35px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        .price span {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-column p, .footer-column ul li {
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 94, 20, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 94, 20, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(255, 94, 20, 0.5);
+            }
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--secondary);
+                padding: 100px 30px 30px;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            nav ul li a {
+                font-size: 1rem;
+            }
+            
+            .header-container .cta-button {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-row .form-group {
+                flex: 1 1 100%;
+            }
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 span {
+                display: inline;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .modal-header {
+                padding: 20px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .price {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>FITNESS <span>STUDIO SIRSA</span></h1>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Classes</a></li>
+                    <li><a href="#">Trainers</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <a href="#" class="cta-button" id="registerBtnMobile">Register</a>
+            </nav>
+            <a href="#" class="cta-button" id="registerBtn">Register</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your <span>Body & Mind</span></h1>
+            <p>Sirsa's premier fitness destination with state-of-the-art facilities, expert trainers, and a supportive community to help you achieve your fitness goals.</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button" id="heroRegisterBtn">Start Your Journey</a>
+                <a href="#" class="cta-button secondary-button">View Classes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Modal -->
+    <div class="registration-modal" id="registrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </div>
+                <h2>Create Your Account</h2>
+                <p>Join our fitness community today and get 7 days free trial</p>
+            </div>
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fitnessLevel">Fitness Level</label>
+                        <select id="fitnessLevel" name="fitnessLevel" required>
+                            <option value="" disabled selected>Select your fitness level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goals">Fitness Goals</label>
+                        <select id="goals" name="goals" required>
+                            <option value="" disabled selected>Select your primary goal</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="endurance">Endurance</option>
+                            <option value="flexibility">Flexibility</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Register Now</button>
+                </form>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes Fitness Studio Sirsa the top choice for fitness enthusiasts in the region</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Modern Equipment</h3>
+                    <p>State-of-the-art fitness equipment from leading brands to support all your workout needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Trainers</h3>
+                    <p>Certified trainers with years of experience to guide you on your fitness journey.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Flexible Schedule</h3>
+                    <p>Classes available throughout the day to fit your busy lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership Plans</h2>
+                <p>Choose the perfect plan that fits your fitness goals and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">₹1,499<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Gym Access</li>
+                        <li><i class="fas fa-check"></i> 2 Group Classes</li>
+                        <li><i class="fas fa-times"></i> Personal Trainer</li>
+                        <li><i class="fas fa-times"></i> Nutrition Plan</li>
+                        <li><i class="fas fa-times"></i> Locker Access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-tag">Popular</div>
+                    <h3>Premium</h3>
+                    <div class="price">₹2,499<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Gym Access</li>
+                        <li><i class="fas fa-check"></i> Unlimited Classes</li>
+                        <li><i class="fas fa-check"></i> Personal Trainer (4 sessions)</li>
+                        <li><i class="fas fa-check"></i> Nutrition Plan</li>
+                        <li><i class="fas fa-times"></i> Locker Access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Elite</h3>
+                    <div class="price">₹3,999<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 24/7 Gym Access</li>
+                        <li><i class="fas fa-check"></i> Unlimited Classes</li>
+                        <li><i class="fas fa-check"></i> Personal Trainer (8 sessions)</li>
+                        <li><i class="fas fa-check"></i> Premium Nutrition Plan</li>
+                        <li><i class="fas fa-check"></i> Locker Access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Fitness Studio Sirsa</h3>
+                    <p>Your premier fitness destination in Sirsa, offering state-of-the-art facilities, expert trainers, and a supportive community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Classes</a></li>
+                        <li><a href="#">Trainers</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 5:30 AM - 10:00 PM</li>
+                        <li>Saturday: 7:00 AM - 9:00 PM</li>
+                        <li>Sunday: 8:00 AM - 8:00 PM</li>
+                        <li>Public Holidays: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fitness Road, Sirsa, Haryana</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@fitnessstudiosirsa.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Fitness Studio Sirsa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Registration modal functionality
+        const registerBtn = document.getElementById('registerBtn');
+        const registerBtnMobile = document.getElementById('registerBtnMobile');
+        const heroRegisterBtn = document.getElementById('heroRegisterBtn');
+        const closeModal = document.getElementById('closeModal');
+        const registrationModal = document.getElementById('registrationModal');
+        const registrationForm = document.getElementById('registrationForm');
+        
+        function openModal() {
+            registrationModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModalFunc() {
+            registrationModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        registerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+        
+        registerBtnMobile.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+            mainNav.classList.remove('active');
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+        
+        heroRegisterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        
+        registrationModal.addEventListener('click', function(e) {
+            if (e.target === registrationModal) {
+                closeModalFunc();
+            }
+        });
+        
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Form submission logic would go here
+            alert('Registration successful! Welcome to Fitness Studio Sirsa!');
+            closeModalFunc();
+            registrationForm.reset();
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.background = 'rgba(30, 30, 30, 0.98)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.background = 'rgba(30, 30, 30, 0.95)';
+            }
+        });
+        
+        // Animation on scroll for sections
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
